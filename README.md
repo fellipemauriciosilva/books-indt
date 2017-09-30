@@ -1,5 +1,5 @@
 # BooksIndt
-Projeto que realiza cadastro de Autor e Livros, realizando requisição com API 'http://libraryapp-alezio.rhcloud.com/api'
+Projeto que realiza cadastro de Autor e Livros, realizando requisição com API `http://libraryapp-alezio.rhcloud.com/api`.
 
 ## Tecnologias
 - Angular 4

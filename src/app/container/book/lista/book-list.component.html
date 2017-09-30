@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-sm-9">
+    <button class="btn btn-primary text-center" (click)="goBackToHome()">Home</button>
+    <button class="btn btn-primary text-center" (click)="editarOuSalvar()">Novo livro</button>
+  </div>
+  <div class="col-sm-3 float-right">
+    <input type="text" name="term" [(ngModel)]="term" (keyup.enter)="find()">
+    <button class="btn btn-primary text-center" (click)="find()">Pesquisar</button>
+  </div>
+</div>
+<h2 (click)="getTodosBooks()"><a class="link">Livros</a></h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Codigo</th>
+    <th>Titulo</th>
+    <th>Autor</th>
+    <th>Ação</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let obj of books">
+    <td>{{obj.id}}</td>
+    <td>{{obj.title}}</td>
+    <td>{{getAuthorByBook(obj)}}</td>
+    <td>
+      <a (click)="editarOuSalvar(obj)" title="Editar" style="padding-right: 5px">
+        <i class="fa fa-pencil-square-o link action" aria-hidden="true"></i>
+      </a>
+      <a (click)="deletar(obj.id)" title="Remover">
+        <i class="fa fa-times link action" aria-hidden="true"></i>
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="row">
+  <div class="col-sm-12 paginacao">
+    <nav aria-label="Paginação">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link link" *ngIf="page !== 0" (click)="back(0)">Início</a></li>
+        <li class="page-item"><a class="page-link link" *ngIf="page !== 0" (click)="back()">Voltar</a></li>
+        <li class="page-item"><a class="page-link link" *ngIf="books.length && !lastPage" (click)="next()">Próxima</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>

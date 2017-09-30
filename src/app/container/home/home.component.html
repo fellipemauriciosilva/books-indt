@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="col-sm-3">
+        <h3 class="title-desc">Autores <a [routerLink]="['/autores']" title="Editar">
+          <i class="fa fa-pencil-square-o link" aria-hidden="true"></i></a></h3>
+        <ul class="submenu" role="menu" aria-labelledby="dLabel">
+          <li><a class="authors {{active}}" (click)="getTodosLivros()"><h4>Todos</h4></a></li>
+          <li *ngFor="let obj of authors"><a class="authors" (click)="getBooksByAuthor(obj)" title="Editar">
+            <h5>{{obj.firstName}} {{obj.lastName}}</h5></a></li>
+        </ul>
+      </div>
+      <div class="col-sm-9">
+        <div class="col-sm-12">
+          <div class="col-sm-6">
+            <h3 class="title-desc">Livros <a [routerLink]="['/books']" title="Editar">
+              <i class="fa fa-pencil-square-o link" aria-hidden="true"></i></a></h3>
+          </div>
+          <div class="col-sm-6">
+            <h3 class="botoes">
+              <button class="btn btn-primary text-center" (click)="novoAutorOuLivro(true)">Novo Autor</button>
+            </h3>
+            <h3 class="botoes">
+              <button class="btn btn-primary text-center" (click)="novoAutorOuLivro()">Novo livro</button>
+            </h3>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Título</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let obj of books">
+              <td>{{obj.title}}</td>
+              <td>
+                <a (click)="editarOuSalvar(obj)" title="Editar" style="padding-right: 5px">
+                  <i class="fa fa-pencil-square-o link action" aria-hidden="true"></i>
+                </a>
+                <a (click)="deletar(obj.id)" title="Remover">
+                  <i class="fa fa-times link action" aria-hidden="true"></i>
+                </a>
+              </td>
+            </tr>
+            <tr class="col-sm-12" *ngIf="!books.length && !lastPage">
+              <h4><a href="">Não existem livros do author <strong>{{author ? author.firstName : ''}}</strong></a></h4>
+            </tr>
+            <tr class="col-sm-12" *ngIf="!books.length && lastPage">
+              <h4><a href=""> Sem mais registros <strong>{{author ? author.firstName : ''}}</strong></a></h4>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 paginacao">
+            <nav aria-label="Paginação">
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link link" *ngIf="page !== 0" (click)="back(0)">Início</a></li>
+                <li class="page-item"><a class="page-link link" *ngIf="page !== 0" (click)="back()">Voltar</a></li>
+                <li class="page-item"><a class="page-link link" *ngIf="books.length && !lastPage" (click)="next()">Próxima</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

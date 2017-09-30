@@ -1,0 +1,26 @@
+.title-desc {
+    padding: 8px;
+    color: #000;
+    font-weight: bold;
+}
+.submenu {
+    display: inline-block;
+    list-style: none;
+    padding-left: inherit;
+    background-color: white;
+}
+.submenu > li {
+    font-size: 14px;
+}
+.authors {
+    cursor: pointer;
+}
+.link {
+    cursor: pointer;
+}
+h5 {
+    font-size: 16px;
+}
+.botoes {
+    display: inline-block;
+}

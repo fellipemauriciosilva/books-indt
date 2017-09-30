@@ -1,0 +1,14 @@
+.title-desc {
+  padding: 8px;
+  color: #000;
+  font-weight: bold;
+}
+.dropdown-menu {
+  display: block;
+}
+.authors {
+  cursor: pointer;
+}
+.link {
+  cursor: pointer;
+}
